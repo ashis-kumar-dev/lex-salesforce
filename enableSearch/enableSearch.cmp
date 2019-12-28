@@ -1,0 +1,27 @@
+<aura:component>
+    <aura:attribute name="data" 
+                    type="Object" 
+                    default="" 
+                    description="search in this list"
+                    required="true"
+                    />
+    <aura:attribute name="columns"
+                    type="String[]"
+                    default=""
+                    description="search in these columns"
+                    />
+    <aura:attribute name="memory"
+                    type="Object"
+                    default=""
+                    description="store the list of original data to enable consequent search" 
+                    />
+    <div onkeyup="{! c.handleKeyUp }" class="slds-clearfix">
+        <lightning:input aura:id="enter-search"
+                         name="enter-search" 
+                         label="Search" 
+                         type="search" 
+                         variant="label-hidden"
+                         class="slds-size_small slds-m-around_x-small slds-float_right" 
+                         />
+    </div>
+</aura:component>
