@@ -12,14 +12,14 @@ This component enables pagination for lightning:datatable using client-side java
 
 #### _Attributes_:
 
-- **master** : { required } This is the master object, where the data retrieved from server is stored.
-- **data** : { required } This is the object that is used in datatable
-- **pageSize** : { optional } This is the rows per page
-- **start** : { optional } This is the start index of the record shown on datatable
-- **end** : { optional } This is the end index of the record shown on datatable
-- **pageNumber** : { default } This is the current page number on datatable
+- **master** : [required](/#) This is the master object, where the data retrieved from server is stored.
+- **data** : [required](/#) This is the object that is used in datatable
+- **pageSize** : [optional](/#) This is the rows per page
+- **start** : [default](/#) This is the start index of the record shown on datatable
+- **end** : [default](/#) This is the end index of the record shown on datatable
+- **pageNumber** : [default](/#) This is the current page number on datatable
 
-> NOTE: Please do not initialise _**pageNumber**_. Pagination functionality highly depends on the default value of _**pageNumber**_.
+> NOTE: Please do not initialize _**defaults**_. Pagination functionality highly depends on the default value of _**defaults**_.
 
 #### _Installation_:
 
