@@ -1,0 +1,81 @@
+<aura:component>
+	<!-- PAGINATION VARIABLES -->
+    <aura:attribute name="pageSize" 
+                    type="Integer" 
+                    default="5"
+                    description="number of rows to show"
+                    required=""
+                    />
+    <aura:attribute name="end"
+                    type="Integer"
+                    default="5"
+                    description="index of the last record in master that is in data"
+                    />
+    <aura:attribute name="start"
+                    type="Integer"
+                    default="0"
+                    description="index of the first record in master that is in data"
+                    />
+    <aura:attribute name="pageNumber" 
+                    type="Integer" 
+                    default="1"
+                    description="current page number"
+                    />
+    <!-- / PAGINATION VARIABLE -->
+    
+    <!-- MASTER OBJECT store all records -->
+    <aura:attribute name="master"
+                    type="Object"
+                    default="[]"
+                    description="stores all the records fetched from server"
+                    required="true"
+                    />
+    <!-- / MASTER OBJECT -->
+    
+    <!-- DATA OBJECT -->
+    <aura:attribute name="data"
+                    type="Object" 
+                    default="[]"
+                    description="stores objects to show"
+                    required="true"
+                    />
+    <!-- / DATA OBJECT -->
+    
+    <!-- MASTER OBJECT CHANGE HANDLER -->
+    <aura:handler name="change" value="{!v.master}" action="{! c.init }" />
+    <!-- / MASTER OBJECT CHANGE HANDLER -->
+    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-size_1-of-2 slds-align_absolute-center">
+            <lightning:button label="First" 
+                              variant="brand"
+                              onclick="{! c.first }"/>
+            <lightning:button label="Previous" 
+                              variant="brand"
+                              onclick="{! c.prev }"
+                              disabled="{!v.pageNumber == 1}"
+                              />
+            <span class="slds-p-horizontal_x-small">
+                page: <span>{!v.pageNumber}</span>
+            </span>
+            <lightning:button label="Next" 
+                              variant="brand"
+                              onclick="{! c.next }"
+                              disabled="{!v.master.length le v.end}"
+                              />
+            <lightning:button label="Last" 
+                              variant="brand"
+                              onclick="{! c.last }"/>
+        </div>
+        <div class="slds-size_1-of-2">
+            <lightning:input type="number"
+                             aura:id="pagesize"
+                             value="{!v.pageSize}"
+                             label="Rows per Page:"
+                             variant="standard"
+                             onblur="{! c.changePageSize }"
+                             class="slds-size_small"
+                             />
+        </div>        
+    </div>
+</aura:component>
