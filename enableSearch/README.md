@@ -31,6 +31,6 @@ Click on [_Christmas' 20_](https://login.salesforce.com/packaging/installPackage
 
 - You can set the **columns** as below.
 
-`<c:enablePagination columns="['column1','column2','column3']" data="{! v.dataForDatatable }" pageSize="25" />`
+`<c:enableSearch columns="['column1','column2','column3']" data="{! v.dataForDatatable }" pageSize="25" />`
 
 **Happy Searching**. Feel free to post your requests.
