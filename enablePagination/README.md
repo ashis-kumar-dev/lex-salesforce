@@ -32,10 +32,10 @@ Click on [_Christmas' 20_](https://login.salesforce.com/packaging/installPackage
 - Add the **enablePagination** component where you want your buttons to be.
 - Pass the attribute you created to store the server returned value to **' master '** and the attribute that you are using for datatable data to **' data '**.
 
-`<c:enablePagination master="{! v.serverReturnedData }" data="{! v.dataForDatatable }" />`
+> `<c:enablePagination master="{! v.serverReturnedData }" data="{! v.dataForDatatable }" />`
 
 - You can set the rows per page as below.
 
-`<c:enablePagination master="{! v.serverReturnedData }" data="{! v.dataForDatatable }" pageSize="25" />`
+> `<c:enablePagination master="{! v.serverReturnedData }" data="{! v.dataForDatatable }" pageSize="25" />`
 
 **Happy Paging**. Feel free to post your requests.

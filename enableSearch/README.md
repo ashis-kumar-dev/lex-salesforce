@@ -24,13 +24,13 @@ Click on [_Christmas' 20_](https://login.salesforce.com/packaging/installPackage
 
 #### _Instruction_:
 
-- Add the **enableSearch** component where you want your buttons to be.
+- Add the **enableSearch** component where you want your Search to be.
 - Pass the attribute that you are using for datatable data to **' data '**.
 
-`<c:enableSearch data="{! v.dataForDatatable }" />`
+> `<c:enableSearch data="{! v.dataForDatatable }" />`
 
 - You can set the **columns** as below.
 
-`<c:enableSearch columns="['column1','column2','column3']" data="{! v.dataForDatatable }" pageSize="25" />`
+> `<c:enableSearch columns="['column1','column2','column3']" data="{! v.dataForDatatable }" />`
 
 **Happy Searching**. Feel free to post your requests.
