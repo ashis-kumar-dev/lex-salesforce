@@ -1,6 +1,6 @@
 <aura:component>
     <aura:attribute name="data" 
-                    type="Object" 
+                    type="Object[]" 
                     default="" 
                     description="search in this list"
                     required="true"
@@ -11,17 +11,39 @@
                     description="search in these columns"
                     />
     <aura:attribute name="memory"
-                    type="Object"
+                    type="Object[]"
                     default=""
                     description="store the list of original data to enable consequent search" 
                     />
-    <div onkeyup="{! c.handleKeyUp }" class="slds-clearfix">
-        <lightning:input aura:id="enter-search"
-                         name="enter-search" 
-                         label="Search" 
-                         type="search" 
-                         variant="label-hidden"
-                         class="slds-size_small slds-m-around_x-small slds-float_right" 
-                         />
-    </div>
+    <aura:attribute name="searchOnEnterKey"
+                    type="Boolean"
+                    default="false"
+                    description=""
+                    />
+    <aura:attribute name="searchResult"
+                    type="Object[]"
+                    default=""
+                    />
+        <div onkeyup="{! c.handleKeyUp }" class="slds-clearfix search-box-container">
+            <lightning:input aura:id="enter-search"
+                             name="enter-search" 
+                             label="Search" 
+                             type="search" 
+                             variant="label-hidden"
+                             class="slds-size_small slds-m-around_x-small slds-float_right" 
+                             />        
+        </div>
+        <aura:if isTrue="{!v.searchResult.length > 0}">
+            <div class="slds-card slds-size_small search-result-container">
+                <ul class="slds-size_small slds-m-right_x-small slds-has-block-links">
+                    <aura:iteration items="{!v.searchResult}" var="each">
+                        <li class="slds-p-vertical_xx-small">
+                            <a href="javascript:void(0);" onclick="{!c.showOnTable}"
+                               data-info="{!each.index}" style="font-size: 16px; color: grey;"
+                               class="slds-m-horizontal_small">{!each.match}</a>
+                        </li>
+                    </aura:iteration>
+                </ul>
+            </div>
+        </aura:if>
 </aura:component>

@@ -1,2 +1,13 @@
 .THIS {
 }
+
+.THIS {
+    position: relative;
+}
+
+.THIS.search-result-container {
+    z-index: 2;
+    position: absolute;
+    top: 3rem;
+    right: 0.5rem;
+}

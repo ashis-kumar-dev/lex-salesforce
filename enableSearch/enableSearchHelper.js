@@ -1,14 +1,28 @@
 ({
-    find : function(component, searchList, searchColumns, searchFor) { 
-        const  searchResult = [];
-        for (const item in searchList) {
-            for (const key in searchColumns) {
-                if (searchList[item][searchColumns[key]].toUpperCase().includes(searchFor.toUpperCase())) {
-                    searchResult.push(searchList[item]);
-                    break;
+  find: function(component, searchList, searchColumns, searchFor) {
+    const searchResult = searchList.filter(function(searchListItem, index) {
+        searchListItem['index'] = index;
+        let isMatch = false;
+        if(!isMatch) {
+            searchColumns.forEach(function(searchColumn) {
+                try {
+                    const toMatch = searchListItem[searchColumn].toString();
+                    if (searchFor.test(toMatch)) {
+                        isMatch = true;
+                        searchListItem['match'] = toMatch;
+                    }
+                } catch (error) {
+                    
                 }
-            }
-        }
-        component.set('v.data', searchResult);
-    }
-})
+                
+            });
+        }        
+        return isMatch;
+    });
+    component.set("v.searchResult", searchResult);
+  },
+  rerender: function(component, data) {
+    component.set("v.data", data);
+    component.set("v.searchResult", []);
+  }
+});
